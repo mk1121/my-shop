@@ -1,0 +1,11 @@
+.cart-title {
+	margin-bottom: 20px;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	display: -webkit-box;
+}
+.card-image{
+  width: 215px;
+  height: 215px;
+}
