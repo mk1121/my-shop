@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react"
 import { Button, Card, Col, Container, Row } from "react-bootstrap"
 import "./Shop.css"
+import Cards from "../Cards/Cards"
 
 const Shop = () => {
-  let [count,setCount] = useState(0);
-  let [product,setProduct] = useState([]);
+    let [product,setProduct] = useState([]);
   // api fetch
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
     .then(res => res.json())
     .then(data => setProduct(data))
   },[])
-   
+   let [count,setCount] = useState(0);
+
 
 function shuffleArray(array) {
   let curId = array.length;
@@ -34,7 +35,7 @@ console.log(arr);
 
 // 10 array select
       
- let  flashSale = arr.slice(0,19);
+ let  flashSale = arr.slice(0,4);
 
   return (
     <>
@@ -48,7 +49,7 @@ console.log(arr);
         </Row>
        
 
-  <Row xs={1} md={5} className="g-4">
+  <Row xs={1} md={4} className="g-4">
   {Array.from({ length: 1 }).map((_, idx) => (
               product && flashSale.map((item) => 
  <>
@@ -77,7 +78,26 @@ console.log(arr);
 
         </Row>
 
-      </Container>
+
+          <Row xs={1} md={4} className="g-4">
+  {Array.from({ length: 1 }).map((_, idx) => (
+              product && flashSale.map((item) => 
+ <>
+                <Cards
+                  key={item.id}
+                  product={item}
+                         
+                  />
+                </>           
+
+          )
+        
+  ))}
+
+        </Row>
+
+
+     </Container>
       
     </>
   )

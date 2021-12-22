@@ -1,5 +1,5 @@
 import React from "react"
-import {  Col, Container,    Nav,    Navbar, Offcanvas, Row } from "react-bootstrap"
+import {   Container,    Nav,    Navbar, Offcanvas } from "react-bootstrap"
 import Cart from "../Cart/Cart"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
