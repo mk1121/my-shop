@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Button, Card, Col } from "react-bootstrap"
 
 const Cards = (props) => {
   const item = props.product;
-console.log(item)
+  let [count,setCount] = useState(0);
+
   return (
+
     <>
       <Col> 
 <Card>
@@ -14,7 +17,7 @@ console.log(item)
        ${item.price} 
       </Card.Text>
       <Card.Text className="card-quantity ">
-       Quantity <Button variant="secondary">-</Button>{' '} <span className="cardCount">99</span> <Button variant="secondary" >+</Button>{' '}
+       Quantity <Button variant="secondary" onClick={() => {if(count === 0){setCount(0) } else{setCount(count - 1)} }}>-</Button>{' '} <span className="cardCount mx-2" style={{cursor:"default"}} >{count}</span> <Button variant="secondary" onClick={() => setCount(count + 1) }>+</Button>{' '}
                        </Card.Text >
      <Card.Text><Button variant="secondary" size="lg" className="card-button">
    Add to Cart 

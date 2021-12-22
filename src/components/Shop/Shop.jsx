@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import { Button, Card, Col, Container, Row } from "react-bootstrap"
+import { Col, Container, Row } from "react-bootstrap"
 import "./Shop.css"
 import Cards from "../Cards/Cards"
+import Catagory from "../Catagory/Catagory"
 
 const Shop = () => {
     let [product,setProduct] = useState([]);
@@ -11,7 +12,6 @@ const Shop = () => {
     .then(res => res.json())
     .then(data => setProduct(data))
   },[])
-   let [count,setCount] = useState(0);
 
 
 function shuffleArray(array) {
@@ -30,12 +30,11 @@ function shuffleArray(array) {
 }
 // Usage of shuffle
   let arr = shuffleArray(product);
-console.log(arr);
 
 
 // 10 array select
       
- let  flashSale = arr.slice(0,4);
+ let  flashSale = arr.slice(0,19);
 
   return (
     <>
@@ -48,37 +47,6 @@ console.log(arr);
           </Col>
         </Row>
        
-
-  <Row xs={1} md={4} className="g-4">
-  {Array.from({ length: 1 }).map((_, idx) => (
-              product && flashSale.map((item) => 
- <>
-<Col> 
-<Card>
-    <Card.Img className="card-image" variant="top" src={item.image} />
-    <Card.Body>
-      <Card.Title className="cart-title">{item.title}</Card.Title>
-      <Card.Text>
-       ${item.price} 
-      </Card.Text>
-      <Card.Text className="card-quantity ">
-       Quantity <Button variant="secondary">-</Button>{' '} <span className="cardCount">{count}</span> <Button variant="secondary" onClick={() => setCount(count + 1)}>+</Button>{' '}
-                       </Card.Text >
-     <Card.Text><Button variant="secondary" size="lg" className="card-button">
-   Add to Cart 
-  </Button> </Card.Text>
-    </Card.Body>
-  </Card>  
-
-  </Col>
-                </>           
-          )
-        
-  ))}
-
-        </Row>
-
-
           <Row xs={1} md={4} className="g-4">
   {Array.from({ length: 1 }).map((_, idx) => (
               product && flashSale.map((item) => 
@@ -95,7 +63,11 @@ console.log(arr);
   ))}
 
         </Row>
-
+<Row>
+  <Col>
+    
+      <Catagory/>          </Col>
+        </Row>
 
      </Container>
       
