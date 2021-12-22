@@ -4,7 +4,9 @@ import Cart from "../Cart/Cart"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import "./Header.css" 
+import { useSelector } from "react-redux";
 const Header = () => {
+  const count = useSelector(state => state.count)
   return (
 
     <>
@@ -24,7 +26,7 @@ const Header = () => {
       
     <span className="me-5">
                      <FontAwesomeIcon icon={faShoppingBag} />
-                     <span id="cartNumber">0</span>
+                     <span id="cartNumber">{count}</span>
 
             </span>
           </Navbar.Toggle>

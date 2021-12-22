@@ -34,7 +34,7 @@ function shuffleArray(array) {
 
 // 10 array select
       
- let  flashSale = arr.slice(0,19);
+ let  flashSale = arr.slice(0,4);
 
   return (
     <>
