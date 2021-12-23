@@ -4,8 +4,9 @@ import "./Shop.css"
 import Cards from "../Cards/Cards"
 import Catagory from "../Catagory/Catagory"
 
-const Shop = () => {
-    let [product,setProduct] = useState([]);
+const Shop = (props) => {
+  const {products} = props
+    const [product,setProduct] = useState([]);
   // api fetch
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -13,8 +14,10 @@ const Shop = () => {
     .then(data => setProduct(data))
   },[])
 
-
-function shuffleArray(array) {
+ 
+console.log(product)
+console.log(products)
+  function shuffleArray(array) {
   let curId = array.length;
   // There remain elements to shuffle
   while (0 !== curId) {
