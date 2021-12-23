@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Card, Col } from "react-bootstrap"
-
+import "./Cards.css"
 const Cards = (props) => {
   const item = props.product;
   let [count,setCount] = useState(0);
@@ -10,7 +10,7 @@ const Cards = (props) => {
     <>
       <Col> 
 <Card>
-    <Card.Img className="card-image" variant="top" src={item.image} />
+    <Card.Img className="card-image mx-auto" variant="top" src={item.image} />
     <Card.Body>
       <Card.Title className="cart-title">{item.title}</Card.Title>
       <Card.Text>
