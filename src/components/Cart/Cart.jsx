@@ -15,12 +15,13 @@ const Cart = (props) => {
          <Col className="col-2"><img src={pd.image} style={{width:"50px"}}/></Col>
          <Col className="col-8"><p id="cart-title" style={{fontWeight: 700}}>{pd.titles}</p>
            <p>price: ${pd.price}
+             <p>Quantity: {pd.quantity}</p>
 </p>
 
           </Col>
          <Col className="col-2">
            <Button
-              onClick={()=> removeFromCart(pd.cartId)}
+              onClick={()=> removeFromCart(pd.cartId,pd.id,pd.quantity,pd.price)}
               className="mx-auto " variant="secondary" size="lg"><FontAwesomeIcon icon={faTrashAlt} /></Button>
           </Col>
         </Row>

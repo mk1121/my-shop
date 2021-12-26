@@ -10,7 +10,8 @@ console.log(products)
 products.product=useCustomHook();
 const product = products.product 
 console.log(product)
-
+const cart = props.cart
+console.log(cart)
   function shuffleArray(array) {
   let curId = array.length;
   // There remain elements to shuffle
@@ -52,7 +53,7 @@ console.log(product)
                   key={item.id}
                   product={item}
                   addToCart={addToCart}
-                  />
+                                    />
                 </>           
           )
   ))}
@@ -65,11 +66,10 @@ console.log(product)
 const mapStateToProps = state =>{
     return {
         products: state.products
-    }
+  }
 }
 
 const mapDispatchToProps = {
-    addToCart: addToCart
-}
+    addToCart: addToCart}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Shop);
