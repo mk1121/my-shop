@@ -2,6 +2,8 @@ import { Button, Card, Col } from "react-bootstrap"
 import "./Cards.css"
 const Cards = (props) => {
   const item = props.product;
+  console.log(item.title)
+  const addToCart = props.addToCart
   return (
 
     <>
@@ -16,7 +18,7 @@ const Cards = (props) => {
       <Card.Text className="card-quantity ">
        Quantity <Button variant="secondary" >-</Button>{' '} <span className="cardCount mx-2" style={{cursor:"default"}} >0</span> <Button variant="secondary">+</Button>{' '}
                        </Card.Text >
-     <Card.Text><Button variant="secondary" size="lg" className="card-button">
+     <Card.Text><Button variant="secondary" size="lg" className="card-button" onClick={() => addToCart(item.id,item.title,item.price,item.image)}>
    Add to Cart 
   </Button>
             </Card.Text>

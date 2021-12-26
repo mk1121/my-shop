@@ -2,11 +2,10 @@ import React from "react"
 import {   Container,    Nav,    Navbar, Offcanvas } from "react-bootstrap"
 import Cart from "../Cart/Cart"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import "./Header.css" 
-import { useSelector } from "react-redux";
+import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 const Header = () => {
-  const count = useSelector(state => state.count)
+
   return (
 
     <>
@@ -26,7 +25,7 @@ const Header = () => {
       
     <span className="me-5">
                      <FontAwesomeIcon icon={faShoppingBag} />
-                     <span id="cartNumber">{count}</span>
+                     <span id="cartNumber"></span>
 
             </span>
           </Navbar.Toggle>
@@ -39,7 +38,9 @@ const Header = () => {
         <Offcanvas.Title id="offcanvasNavbarLabel">Cart</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
-                    <Cart/>
+                    <Cart
+
+                />
                     
       </Offcanvas.Body>
     </Navbar.Offcanvas>

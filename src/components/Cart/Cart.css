@@ -1,0 +1,7 @@
+#cart-title{
+	margin-bottom: 20px;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	display: -webkit-box;
+}

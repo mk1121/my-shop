@@ -1,3 +1,3 @@
 import { createStore } from "redux";
-import cardReducer from "./../Reducer/cardReducer";
-export const store = createStore(cardReducer) 
+import CardReducer from "./../Reducer/cardReducer";
+export const store = createStore(CardReducer) 

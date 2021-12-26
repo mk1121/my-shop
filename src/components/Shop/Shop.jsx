@@ -1,22 +1,16 @@
-import { useEffect, useState } from "react"
 import { Col, Container, Row } from "react-bootstrap"
 import "./Shop.css"
 import Cards from "../Cards/Cards"
-import Catagory from "../Catagory/Catagory"
-
+import { addToCart } from "../../Redux/Action/cardAction"
+import { connect } from "react-redux"
+import useCustomHook from "./../../useCustomHook/useCustomHook"
 const Shop = (props) => {
-  const {products} = props
-    const [product,setProduct] = useState([]);
-  // api fetch
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-    .then(res => res.json())
-    .then(data => setProduct(data))
-  },[])
-
- 
-console.log(product)
+const {products,addToCart} = props;
 console.log(products)
+products.product=useCustomHook();
+const product = products.product 
+console.log(product)
+
   function shuffleArray(array) {
   let curId = array.length;
   // There remain elements to shuffle
@@ -52,30 +46,30 @@ console.log(products)
        
           <Row xs={1} md={4} className="g-4">
   {Array.from({ length: 1 }).map((_, idx) => (
-              product && flashSale.map((item) => 
+              flashSale.map((item) => 
  <>
                 <Cards
                   key={item.id}
                   product={item}
-                         
+                  addToCart={addToCart}
                   />
                 </>           
-
           )
-        
   ))}
-
         </Row>
-<Row>
-  <Col>
-    
-      <Catagory/>          </Col>
-        </Row>
-
      </Container>
-      
     </>
   )
 }
 
-export default Shop
+const mapStateToProps = state =>{
+    return {
+        products: state.products
+    }
+}
+
+const mapDispatchToProps = {
+    addToCart: addToCart
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Shop);
