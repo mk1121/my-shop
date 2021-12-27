@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { Button, Card, Col } from "react-bootstrap"
+import { connect } from "react-redux";
 import { removeFromCart } from "../../Redux/Action/cardAction";
 import "./Cards.css"
 const Cards = (props) => {
+  const cart = props.cart;
   const item = props.product;
-  console.log(item.title)
-let [count,setCount] = useState(0)
+ const cartQn =  cart.find(it => it.productId === item.id );
+ if(cartQn){
+   cartQn.quantity = item.quantity;
+  }
+  let [count,setCount] = useState(0)
   const addToCart = props.addToCart
 
 item.quantity = count ;
@@ -15,7 +20,7 @@ return (<>
 <Card.Text className="card-quantity ">
                Quantity <Button variant="secondary" onClick={() =>{return setCount(count - 1),removeFromCart(item.cardId,item.id,item.quantity,item.price)}}>-</Button>{' '} 
               <span className="cardCount mx-2" style={{cursor:"default"}} >{item.quantity }</span>
-              <Button variant="secondary" onClick={() =>{return setCount(count + 1),addToCart(item.id,item.title,item.price,item.image,item.quantity)}}>+</Button>{' '}
+              <Button variant="secondary" onClick={() =>{return setCount(count + 1), addToCart(item.id,item.title,item.price,item.image,item.quantity)}}>+</Button>{' '}
                        </Card.Text >
 
 </>)
@@ -61,4 +66,12 @@ return ( <>
   )
 }
 
-export default Cards
+const mapStateToProps = state =>{
+    return {
+        cart: state.cart
+  }
+}
+
+
+
+export default connect(mapStateToProps)(Cards);

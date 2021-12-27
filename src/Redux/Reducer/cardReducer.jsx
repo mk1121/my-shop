@@ -32,15 +32,15 @@ const newItem ={
       
           
     case RemoveFromCart:
-      const samesProduct = state.cart.find(item => item.productId === action.id)
+const samesProduct = state.cart.find(item => item.productId === action.id)
 if(samesProduct){
-
 let counts = samesProduct.quantity - 1;
 samesProduct.quantity = counts;
 const otherss = state.cart.filter(item => item.productId !== action.id)
 const remaingCart = [...otherss,samesProduct]
 return {...state, cart:remaingCart}      
       }
+      
       else{
  const cartId = action.id
 const remaingCart = state.cart.filter( item => item.id !== cartId)
