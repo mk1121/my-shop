@@ -5,8 +5,8 @@ export const addToCart = (id,title,price,image,quantity) =>{
     type: AddToCart,id,title,price,image,quantity
   } 
 } 
-export const removeFromCart = (cartId,id,quantity,price) => {
+export const removeFromCart = (productId) => {
   return {
-    type: RemoveFromCart,cartId,id,quantity,price
+    type: RemoveFromCart,productId
   }
 } 

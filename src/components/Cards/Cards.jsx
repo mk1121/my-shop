@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button, Card, Col } from "react-bootstrap"
 import { connect } from "react-redux";
-import { removeFromCart } from "../../Redux/Action/cardAction";
 import "./Cards.css"
 const Cards = (props) => {
   const cart = props.cart;
@@ -18,11 +17,10 @@ console.log(item)
 const myFunction = () => {  if(item.quantity > 0){
 return (<>
 <Card.Text className="card-quantity ">
-               Quantity <Button variant="secondary" onClick={() =>{return setCount(count - 1),removeFromCart(item.cardId,item.id,item.quantity,item.price)}}>-</Button>{' '} 
+               Quantity <Button variant="secondary" onClick={() =>{return setCount(count - 1)}}>-</Button>{' '} 
               <span className="cardCount mx-2" style={{cursor:"default"}} >{item.quantity }</span>
               <Button variant="secondary" onClick={() =>{return setCount(count + 1), addToCart(item.id,item.title,item.price,item.image,item.quantity)}}>+</Button>{' '}
                        </Card.Text >
-
 </>)
 } 
 else{
@@ -65,7 +63,6 @@ return ( <>
 
   )
 }
-
 const mapStateToProps = state =>{
     return {
         cart: state.cart
