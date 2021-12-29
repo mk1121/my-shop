@@ -6,12 +6,12 @@ import { connect } from "react-redux"
 import useCustomHook from "./../../useCustomHook/useCustomHook"
 const Shop = (props) => {
 const {products,addToCart} = props;
-console.log(products)
-products.product=useCustomHook();
-const product = products.product 
-console.log(product)
-const cart = props.cart
-console.log(cart)
+
+
+  products.product = useCustomHook(); /* make a custom hook & set It here */
+
+const  product = products.product;   /* distructuring  */
+  
   function shuffleArray(array) {
   let curId = array.length;
   // There remain elements to shuffle
@@ -24,11 +24,12 @@ console.log(cart)
     array[curId] = array[randId];
     array[randId] = tmp;
   }
+
   return array;
 }
+
 // Usage of shuffle
   let arr = shuffleArray(product);
-
 
 // 10 array select
       
@@ -48,28 +49,32 @@ console.log(cart)
           <Row xs={1} md={4} className="g-4">
   {Array.from({ length: 1 }).map((_, idx) => (
               flashSale.map((item) => 
- <>
+            {
+              return( 
+                <>
                 <Cards
                   key={item.id}
-                  product={item}
-                  addToCart={addToCart}
-                                    />
+                  ps={item}
+                    addToCart ={addToCart}                />
                 </>           
           )
-  ))}
+              }
+
+  )))}
         </Row>
      </Container>
     </>
   )
 }
-
 const mapStateToProps = state =>{
     return {
-        products: state.products
+    products: state.products
   }
 }
-
 const mapDispatchToProps = {
-    addToCart: addToCart}
+  addToCart: addToCart
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Shop);
+
+export default connect(mapStateToProps,mapDispatchToProps)(Shop);
+
