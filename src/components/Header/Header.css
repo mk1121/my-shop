@@ -1,4 +1,7 @@
+
 #cartNumber {
+	font-size: 13px;
+	color: black;
+	font-weight: bold;
 	position: absolute;
-	font-size: 15px;
 }

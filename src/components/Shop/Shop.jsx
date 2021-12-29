@@ -1,20 +1,18 @@
-import { useEffect, useState } from "react"
 import { Col, Container, Row } from "react-bootstrap"
 import "./Shop.css"
 import Cards from "../Cards/Cards"
-import Catagory from "../Catagory/Catagory"
-
-const Shop = () => {
-    let [product,setProduct] = useState([]);
-  // api fetch
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-    .then(res => res.json())
-    .then(data => setProduct(data))
-  },[])
+import { addToCart } from "../../Redux/Action/cardAction"
+import { connect } from "react-redux"
+import useCustomHook from "./../../useCustomHook/useCustomHook"
+const Shop = (props) => {
+const {products,addToCart} = props;
 
 
-function shuffleArray(array) {
+  products.product = useCustomHook(); /* make a custom hook & set It here */
+
+const  product = products.product;   /* distructuring  */
+  
+  function shuffleArray(array) {
   let curId = array.length;
   // There remain elements to shuffle
   while (0 !== curId) {
@@ -26,15 +24,16 @@ function shuffleArray(array) {
     array[curId] = array[randId];
     array[randId] = tmp;
   }
+
   return array;
 }
+
 // Usage of shuffle
   let arr = shuffleArray(product);
 
-
 // 10 array select
       
- let  flashSale = arr.slice(0,19);
+ let  flashSale = arr.slice(0,4);
 
   return (
     <>
@@ -49,30 +48,33 @@ function shuffleArray(array) {
        
           <Row xs={1} md={4} className="g-4">
   {Array.from({ length: 1 }).map((_, idx) => (
-              product && flashSale.map((item) => 
- <>
+              flashSale.map((item) => 
+            {
+              return( 
+                <>
                 <Cards
                   key={item.id}
-                  product={item}
-                         
-                  />
+                  ps={item}
+                    addToCart ={addToCart}                />
                 </>           
-
           )
-        
-  ))}
+              }
 
+  )))}
         </Row>
-<Row>
-  <Col>
-    
-      <Catagory/>          </Col>
-        </Row>
-
      </Container>
-      
     </>
   )
 }
+const mapStateToProps = state =>{
+    return {
+    products: state.products
+  }
+}
+const mapDispatchToProps = {
+  addToCart: addToCart
+}
 
-export default Shop
+
+export default connect(mapStateToProps,mapDispatchToProps)(Shop);
+

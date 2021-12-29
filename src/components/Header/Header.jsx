@@ -2,9 +2,10 @@ import React from "react"
 import {   Container,    Nav,    Navbar, Offcanvas } from "react-bootstrap"
 import Cart from "../Cart/Cart"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import "./Header.css" 
-const Header = () => {
+import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import { connect } from "react-redux"
+const Header = ({cart}) => {
   return (
 
     <>
@@ -21,10 +22,10 @@ const Header = () => {
 
                  <Navbar.Toggle aria-controls="offcanvasNavbar">
 
-      
+        
     <span className="me-5">
                      <FontAwesomeIcon icon={faShoppingBag} />
-                     <span id="cartNumber">0</span>
+                     <span id="cartNumber">{cart.length}</span>
 
             </span>
           </Navbar.Toggle>
@@ -37,7 +38,9 @@ const Header = () => {
         <Offcanvas.Title id="offcanvasNavbarLabel">Cart</Offcanvas.Title>
       </Offcanvas.Header>
       <Offcanvas.Body>
-                    <Cart/>
+                    <Cart
+
+                />
                     
       </Offcanvas.Body>
     </Navbar.Offcanvas>
@@ -46,5 +49,11 @@ const Header = () => {
     </>
   )
 }
+const mapStateToProps = state =>{
+    return {
+        cart: state.cart
+    }
+}
 
-export default Header
+export default connect(mapStateToProps)(Header);
+

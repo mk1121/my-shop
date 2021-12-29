@@ -1,27 +1,31 @@
-import { useState } from "react";
 import { Button, Card, Col } from "react-bootstrap"
 import "./Cards.css"
 const Cards = (props) => {
-  const item = props.product;
-  let [count,setCount] = useState(0);
-
-  return (
+  const item = props.ps;
+const addToCart = props.addToCart
+   return (
 
     <>
       <Col> 
 <Card>
     <Card.Img className="card-image mx-auto" variant="top" src={item.image} />
     <Card.Body>
-      <Card.Title className="cart-title">{item.title}</Card.Title>
-      <Card.Text>
-       ${item.price} 
-      </Card.Text>
-      <Card.Text className="card-quantity ">
-       Quantity <Button variant="secondary" onClick={() => {if(count === 0){setCount(0) } else{setCount(count - 1)} }}>-</Button>{' '} <span className="cardCount mx-2" style={{cursor:"default"}} >{count}</span> <Button variant="secondary" onClick={() => setCount(count + 1) }>+</Button>{' '}
-                       </Card.Text >
-     <Card.Text><Button variant="secondary" size="lg" className="card-button">
-   Add to Cart 
-  </Button> </Card.Text>
+      <Card.Title className="cart-title" style={{height:"48px"}}>{item.title}
+            </Card.Title>
+      <Card.Text>${item.price}</Card.Text>
+
+            <Card.Text>
+  
+              <Button variant="secondary" size="lg" className="card-button" 
+                  onClick={() =>  addToCart(item.id,item.title,item.price,item.image)}
+              >Add to Cart </Button>
+
+            </Card.Text>
+           
+
+            
+             
+                         
     </Card.Body>
   </Card>  
 
@@ -31,4 +35,4 @@ const Cards = (props) => {
   )
 }
 
-export default Cards
+export default Cards;
