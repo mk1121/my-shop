@@ -4,8 +4,8 @@ import Cart from "../Cart/Cart"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "./Header.css" 
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
-const Header = () => {
-
+import { connect } from "react-redux"
+const Header = ({cart}) => {
   return (
 
     <>
@@ -22,10 +22,10 @@ const Header = () => {
 
                  <Navbar.Toggle aria-controls="offcanvasNavbar">
 
-      
+        
     <span className="me-5">
                      <FontAwesomeIcon icon={faShoppingBag} />
-                     <span id="cartNumber"></span>
+                     <span id="cartNumber">{cart.length}</span>
 
             </span>
           </Navbar.Toggle>
@@ -49,5 +49,11 @@ const Header = () => {
     </>
   )
 }
+const mapStateToProps = state =>{
+    return {
+        cart: state.cart
+    }
+}
 
-export default Header
+export default connect(mapStateToProps)(Header);
+
