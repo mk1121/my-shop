@@ -5,3 +5,14 @@
 	overflow: hidden;
 	display: -webkit-box;
 }
+.quantityBtn {
+align-items: center;
+    display: inherit;
+}
+.quantityBtn button {
+    height: 30px;
+}
+.removeCol {
+    align-items: center;
+    display: inherit;
+}
